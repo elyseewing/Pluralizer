@@ -12,7 +12,9 @@ class Pluralizer
   # @return [String] word in plural form
 
   def self.pluralize(word)
-    if is_vowel(word[-2,1]) && word[-1,1] == "y"
+    if word[-3,3] == "man"
+      puts word[0, word.length - 3] + "men"
+    elsif is_vowel(word[-2,1]) && word[-1,1] == "y"
       puts word + "s"
     elsif is_vowel(word[-2,1]) == false && word[-1,1] == "y"
       puts word[0, word.length - 1] + "ies"
@@ -20,8 +22,10 @@ class Pluralizer
       puts word + "s"
     elsif is_vowel(word[-2,1]) == false && word[-1,1] == "o"
       puts word + "es"
-    elsif word[-2,2] == "fe" || word[-1,1] == "f"
+    elsif word[-1,1] == "f"
       puts word[0, word.length - 1] + "ves"
+    elsif word[-2,2] == "fe"
+      puts word[0, word.length - 2] + "ves"
     elsif word[-1,1] == "s" || word[-2,2] == "ss" || word[-2,2] == "sh" || word[-2,2] == "ch" || word[-1,1] == "x" || word[-1,1] == "z"
       puts word + "es"
     else
