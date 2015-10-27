@@ -11,3 +11,6 @@ Pluralizer.pluralize("box")
 
 Pluralizer.pluralize("potato")
 => "potatoes"
+
+Pluralizer.pluralize("woman")
+=> "women"
