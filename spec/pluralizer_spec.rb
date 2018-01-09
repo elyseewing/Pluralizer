@@ -22,4 +22,11 @@ RSpec.describe Pluralizer do
   it { expect(described_class.pluralize('knife')).to eq 'knives' }
   it { expect(described_class.pluralize('lens')).to eq 'lenses' }
   it { expect(described_class.pluralize('pluralizer')).to eq 'pluralizers' }
+
+  context 'when word capitalized' do
+    it { expect(described_class.pluralize('Child')).to eq 'Children' }
+    it { expect(described_class.pluralize('Woman')).to eq 'Women' }
+    it { expect(described_class.pluralize('Bison')).to eq 'Bison' }
+    it { expect(described_class.pluralize('Man')).to eq 'Men' }
+  end
 end

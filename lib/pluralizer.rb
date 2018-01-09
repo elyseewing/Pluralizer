@@ -11,31 +11,31 @@ class Pluralizer
   # @return [String] word in plural form
 
   PLURALIZE_EXCEPTIONS = {
-    'child' => 'children',
-    'ox' => 'oxen',
-    'tooth' => 'teeth',
-    'foot' => 'feet',
-    'person' => 'people',
-    'index' => 'indices',
-    'matrix' => 'matrices',
-    'vertex' => 'vertices',
-    'radius' => 'radii',
-    'automaton' => 'automata',
-    'alumnus' => 'alumni',
-    'axis' => 'axes',
-    'mouse' => 'mice',
-    'goose' => 'geese',
-    'cactus' => 'cacti',
-    'focus' => 'foci',
-    'fungus' => 'fungi',
-    'nucleus' => 'nuclei',
-    'bacterium' => 'bacteria',
-    'stimulus' => 'stimuli',
-    'syllabus' => 'syllabi',
-    'phenomenon' => 'phenomena',
-    'criterion' => 'criteria',
-    'datum' => 'data',
-    'kilo' => 'kilos'
+    'child' => 'hildren',
+    'ox' => 'xen',
+    'tooth' => 'eeth',
+    'foot' => 'eet',
+    'person' => 'eople',
+    'index' => 'ndices',
+    'matrix' => 'atrices',
+    'vertex' => 'ertices',
+    'radius' => 'adii',
+    'automaton' => 'utomata',
+    'alumnus' => 'lumni',
+    'axis' => 'xes',
+    'mouse' => 'ice',
+    'goose' => 'eese',
+    'cactus' => 'acti',
+    'focus' => 'oci',
+    'fungus' => 'ungi',
+    'nucleus' => 'uclei',
+    'bacterium' => 'acteria',
+    'stimulus' => 'timuli',
+    'syllabus' => 'yllabi',
+    'phenomenon' => 'henomena',
+    'criterion' => 'riteria',
+    'datum' => 'ata',
+    'kilo' => 'ilos'
   }.freeze
 
   UNCOUNTABLE_WORDS = %w[sheep fish deer bison buffalo moose salmon squid trout
@@ -43,12 +43,13 @@ class Pluralizer
   VOWELS = %w[a e i o u].freeze
 
   def self.pluralize(word)
-    if PLURALIZE_EXCEPTIONS.keys.include?(word)
-      PLURALIZE_EXCEPTIONS[word]
-    elsif UNCOUNTABLE_WORDS.include?(word)
+    downcased_word = word.downcase
+    if PLURALIZE_EXCEPTIONS.keys.include?(downcased_word)
+      word[0] + PLURALIZE_EXCEPTIONS[downcased_word]
+    elsif UNCOUNTABLE_WORDS.include?(downcased_word)
       word
-    elsif word[-3, 3] == 'man'
-      word[0, word.length - 3] + 'men'
+    elsif downcased_word[-3, 3] == 'man'
+      word[0, word.length - 2] + 'en'
     elsif word[-3, 3] == 'sis'
       word[0, word.length - 3] + 'ses'
     elsif VOWELS.include?(word[-2, 1]) && %w[y o].include?(word[-1, 1])
