@@ -8,4 +8,6 @@ Gem::Specification.new do |s|
   s.email = 'elysedougherty@gmail.com'
   s.files = ["lib/pluralizer.rb"]
   s.homepage = 'http://rubygems.org/gems/pluralizer'
+
+  s.add_development_dependency "rspec", "~> 3.0"
 end
